@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dusted N Done By Janvi — Handmade Press On Nails</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="cherry">🍒</span>
+        <span class="brand-name">dustedndonebyjanvi</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://instagram.com/dustedndonebyjanvi" target="_blank">Instagram</a></li>
+      </ul>
+      <button class="cart-btn" onclick="toggleCart()">
+        🛍️ <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#shop" onclick="toggleMenu()">Shop</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="https://instagram.com/dustedndonebyjanvi" target="_blank">Instagram</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-petals">
+      <span class="petal p1">🌸</span>
+      <span class="petal p2">🌸</span>
+      <span class="petal p3">🌸</span>
+      <span class="petal p4">✨</span>
+      <span class="petal p5">🌸</span>
+      <span class="petal p6">✨</span>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Handmade with love 🍒</p>
+      <h1 class="hero-title">Press On Nails<br><em>that slay</em></h1>
+      <p class="hero-sub">Custom handcrafted press-on nails by Janvi.<br>Reusable • Waterproof • Professional finish.</p>
+      <a href="#shop" class="btn-primary">Shop Now</a>
+    </div>
+    <div class="hero-card-preview">
+      <div class="card-mockup welcome-card">
+        <div class="welcome-card-corners">
+          <span class="wc-corner wc-tl">🌸</span>
+          <span class="wc-corner wc-tr">🌸</span>
+          <span class="wc-corner wc-bl">🌸</span>
+          <span class="wc-corner wc-br">🌸</span>
+        </div>
+        <div class="welcome-card-top">
+          <span class="wc-bow">🎀</span>
+          <span class="wc-cherry">🍒</span>
+        </div>
+        <h2 class="welcome-title">Welcome!</h2>
+        <div class="welcome-box">
+          <p>NAILS THAT SPEAK BEFORE YOU DO!</p>
+        </div>
+        <p class="welcome-ig">📷 @dustedndonebyjanvi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER -->
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span>✨ FREE SHIPPING ON ORDERS ABOVE ₹699 &nbsp;&nbsp;&nbsp; 🍒 CUSTOM SIZING AVAILABLE &nbsp;&nbsp;&nbsp; ✨ DM FOR CUSTOM ORDERS &nbsp;&nbsp;&nbsp; 🍒 SHIPS IN 7–14 DAYS &nbsp;&nbsp;&nbsp;</span>
+      <span>✨ FREE SHIPPING ON ORDERS ABOVE ₹699 &nbsp;&nbsp;&nbsp; 🍒 CUSTOM SIZING AVAILABLE &nbsp;&nbsp;&nbsp; ✨ DM FOR CUSTOM ORDERS &nbsp;&nbsp;&nbsp; 🍒 SHIPS IN 7–14 DAYS &nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- SHOP -->
+  <section class="shop" id="shop">
+    <div class="section-header">
+      <h2>The Collection</h2>
+      <p>Each set is handcrafted & made to order just for you 💕</p>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="filter-tabs">
+      <button class="tab active" onclick="filterProducts('all', this)">All</button>
+      <button class="tab" onclick="filterProducts('short', this)">Short</button>
+      <button class="tab" onclick="filterProducts('medium', this)">Medium</button>
+      <button class="tab" onclick="filterProducts('long', this)">Long</button>
+      <button class="tab" onclick="filterProducts('custom', this)">Custom</button>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <!-- Products injected by JS -->
+    </div>
+  </section>
+
+  <!-- PRODUCT MODAL -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="">
+        <div class="modal-img-dots" id="modalDots"></div>
+      </div>
+      <div class="modal-info">
+        <h2 id="modalName"></h2>
+        <div class="modal-price-row">
+          <span class="modal-price" id="modalPrice"></span>
+          <span class="modal-og-price" id="modalOgPrice"></span>
+        </div>
+        <p id="modalDesc"></p>
+        <div class="modal-meta">
+          <div><strong>Shipping</strong><span>Ships in 7–14 days</span></div>
+          <div><strong>Support</strong><span>DM @dustedndonebyjanvi</span></div>
+        </div>
+        <div class="modal-note">
+          📸 <strong>For sizing:</strong> Please upload a photo of both hands with a coin after ordering. DM on Instagram.
+        </div>
+        <div class="modal-upload">
+          <label>Upload reference photo (optional)</label>
+          <input type="file" accept="image/*" multiple id="refUpload">
+        </div>
+        <button class="btn-primary full-width" onclick="addToCartFromModal()">Add to Bag</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART DRAWER -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>🛍️ Your Bag</h3>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty-cart">Your bag is empty 💕</p>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <p class="cart-advance-note">💳 50% advance required to confirm your order. Remaining 50% after delivery / at the time of delivery.</p>
+      <button class="btn-primary full-width" onclick="proceedToCheckout()">CHECKOUT</button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal-overlay" id="checkoutOverlay">
+    <div class="modal checkout-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeCheckout()">✕</button>
+      <div class="checkout-heart">❤️</div>
+      <h2>Almost there!</h2>
+      <p class="checkout-sub">Fill in your details to place your order</p>
+
+      <div class="checkout-form">
+        <input type="text" placeholder="Full Name *" id="cName" required>
+        <input type="text" placeholder="@ Instagram handle" id="cInsta">
+        <input type="tel" placeholder="📱 Phone Number *" id="cPhone" required>
+        <input type="email" placeholder="Email ID" id="cEmail">
+
+        <h4>🏠 Shipping Address</h4>
+        <textarea placeholder="Address with Landmark *" id="cAddress" required></textarea>
+        <div class="form-row">
+          <input type="text" placeholder="Pincode *" id="cPin" required>
+          <input type="text" placeholder="City *" id="cCity" required>
+        </div>
+        <div class="form-row">
+          <input type="text" placeholder="State" id="cState">
+          <input type="text" value="India" id="cCountry" readonly>
+        </div>
+
+        <h4>📝 Order Note</h4>
+        <textarea placeholder="Special requests, nail shape preference, anything else..." id="cNote"></textarea>
+
+        <div class="delivery-box">
+          <h4>🚚 Delivery</h4>
+          <label class="delivery-option"><input type="checkbox" checked disabled> Regular Delivery (7–14 days) — FREE</label>
+        </div>
+
+        <div class="payment-box">
+          <h4>💳 Payment Method</h4>
+          <p class="payment-note">You will receive a UPI payment link on your phone/Instagram after order confirmation.</p>
+          <label><input type="radio" name="payment" value="upi" checked> UPI (Google Pay, PhonePe, Paytm)</label>
+          <label><input type="radio" name="payment" value="bank"> Bank Transfer (NEFT/IMPS)</label>
+          <label><input type="radio" name="payment" value="cod"> Cash on Delivery (COD)</label>
+        </div>
+
+        <div class="order-summary" id="checkoutSummary"></div>
+
+        <div class="advance-notice">
+          💳 <strong>50% advance</strong> required to confirm your order. Remaining 50% after delivery / at the time of delivery.
+        </div>
+
+        <button class="btn-primary full-width" onclick="placeOrder()">Place Order 💕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER SUCCESS -->
+  <div class="modal-overlay" id="successOverlay">
+    <div class="modal success-modal" onclick="event.stopPropagation()">
+      <div class="success-icon">🎉</div>
+      <h2>Order Placed!</h2>
+      <p>Thank you so much! Your order has been received. 💕<br>We'll reach out with payment details and updates shortly.</p>
+      <p class="success-ig" id="successReminder">📸 Don't forget to send your nail size photo to<br><strong>@dustedndonebyjanvi</strong> on Instagram!</p>
+      <button class="btn-primary" onclick="closeSuccess()">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <h2>Hey, I'm Janvi 💕</h2>
+        <p>I'm a passionate nail artist who turned my love for creativity into something meaningful. I enjoy designing unique, stylish press-on nails that help you express your personality effortlessly.</p>
+        <p>What started as a small interest has now become something I truly care about — where every set I create reflects my dedication, patience, and attention to detail.</p>
+        <p>For me, it's not just about nails — it's about making you feel confident, put-together, and a little more like yourself every time you wear them ✨</p>
+        <a href="https://instagram.com/dustedndonebyjanvi" target="_blank" class="btn-outline">Follow on Instagram 🍒</a>
+      </div>
+      <div class="about-card">
+
+        <div class="about-badge">
+          <span>💧</span>
+          <strong>Waterproof</strong>
+          <small>Swim-safe</small>
+        </div>
+        <div class="about-badge">
+          <span>📏</span>
+          <strong>Custom Sizing</strong>
+          <small>Made for your nails</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-header">
+      <h2>Questions? 💬</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I get the right size? <span>+</span></button>
+        <div class="faq-a">After placing your order, DM us on Instagram <strong>@dustedndonebyjanvi</strong> with a photo of both your hands placed next to a coin. We'll size your nails perfectly!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How long do they last? <span>+</span></button>
+        <div class="faq-a">With nail glue, they last 1–2 weeks. With nail tabs, 3–5 days.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">When will my order ship? <span>+</span></button>
+        <div class="faq-a">All sets are handmade to order. Please allow 7–14 days for your set to be crafted and shipped. You'll receive tracking once shipped.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I request a custom design? <span>+</span></button>
+        <div class="faq-a">Yes! DM us on Instagram with your inspo pics. Custom orders are accepted based on availability. Pricing varies by design complexity.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I pay? <span>+</span></button>
+        <div class="faq-a">After placing your order, we'll send you a UPI payment link (Google Pay / PhonePe / Paytm) or bank details on Instagram. Order is confirmed after payment.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do you offer returns? <span>+</span></button>
+        <div class="faq-a">Since all sets are made to order and custom sized, we don't accept returns. However if there's a quality issue, DM us and we'll make it right 💕</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="cherry">🍒</span>
+        <span class="brand-name">dustedndonebyjanvi</span>
+        <p>Handmade Press On Nails</p>
+      </div>
+      <div class="footer-links">
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://instagram.com/dustedndonebyjanvi" target="_blank">📸 Instagram</a>
+      </div>
+      <p class="footer-copy">Made with 💕 by Janvi · @dustedndonebyjanvi</p>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
